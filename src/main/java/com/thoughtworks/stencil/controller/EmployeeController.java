@@ -1,12 +1,14 @@
 package com.thoughtworks.stencil.controller;
 
+import com.thoughtworks.stencil.model.Employee;
 import com.thoughtworks.stencil.service.EmployeeService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-@RestController
+import java.util.List;
+
+@Controller
 public class EmployeeController {
 
     private EmployeeService employeeService;
@@ -16,7 +18,8 @@ public class EmployeeController {
     }
 
     @GetMapping("/employee")
-    public ResponseEntity getEmployees() {
-        return new ResponseEntity<>(employeeService.getAllEmployees(), HttpStatus.OK);
+    @ResponseBody
+    public List<Employee> getEmployees() {
+        return employeeService.getAllEmployees();
     }
 }

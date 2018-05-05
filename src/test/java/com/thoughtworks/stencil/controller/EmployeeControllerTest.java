@@ -9,8 +9,6 @@ import static org.mockito.Mockito.mock;
 import com.thoughtworks.stencil.model.Employee;
 import com.thoughtworks.stencil.service.EmployeeService;
 import org.junit.Test;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -26,10 +24,8 @@ public class EmployeeControllerTest {
 
         //when
         EmployeeController employeeController = new EmployeeController(employeeService);
-        ResponseEntity employeesResponse = employeeController.getEmployees();
+        List<Employee> employees = employeeController.getEmployees();
         //then
-        assertThat(employeesResponse.getStatusCode(), is(HttpStatus.OK));
-        List<Employee> employees = (List<Employee>) employeesResponse.getBody();
         assertThat(employees.size(), is(1));
     }
 }
