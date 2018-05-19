@@ -27,7 +27,7 @@ public class EmployeeServiceTest {
         List<Employee> allEmployees = employeeService.getAllEmployees();
 
         //then
-        assertThat(allEmployees.size(), is(1));
+        assertThat(allEmployees.size(), is(0));
         assertThat(allEmployees.get(0).getId(), is(1));
     }
 }
